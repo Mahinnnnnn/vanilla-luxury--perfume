@@ -103,7 +103,7 @@ function createParticles() {
 // Render Functions
 function createProductCard(product) {
   return `
-    <div class="glass-card rounded-xl overflow-hidden group hover:-translate-y-2 transition-transform duration-500">
+    <div class="glass-card rounded-xl overflow-hidden group transition-transform duration-500" data-tilt data-tilt-max="15" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.2" data-tilt-scale="1.02">
       <div class="relative h-80 overflow-hidden cursor-pointer" onclick='openModal(${JSON.stringify(product).replace(/'/g, "\\'")})'>
         <img 
           src="${product.image}" 
@@ -137,6 +137,11 @@ function renderProducts() {
   }
   if (bestSellersGrid) {
     bestSellersGrid.innerHTML = PRODUCTS.slice(3, 7).map(createProductCard).join('');
+  }
+  
+  // Initialize VanillaTilt for the freshly rendered cards
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll(".glass-card[data-tilt]"));
   }
 }
 
@@ -233,6 +238,11 @@ function setupSearch() {
           </div>
         </section>
       `;
+    }
+    
+    // Initialize VanillaTilt for search results or restored layout
+    if (typeof VanillaTilt !== 'undefined') {
+      VanillaTilt.init(document.querySelectorAll(".glass-card[data-tilt]"));
     }
   });
 }
