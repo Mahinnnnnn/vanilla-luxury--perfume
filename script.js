@@ -82,7 +82,23 @@ document.addEventListener('DOMContentLoaded', () => {
   renderProducts();
   renderReviews();
   setupSearch();
+  createParticles();
 });
+
+function createParticles() {
+  const bg = document.getElementById('luxuryBg');
+  if (!bg) return;
+  
+  for (let i = 0; i < 30; i++) {
+    const particle = document.createElement('div');
+    particle.className = 'particle';
+    particle.style.left = Math.random() * 100 + 'vw';
+    particle.style.top = Math.random() * 100 + 'vh';
+    particle.style.animationDuration = (Math.random() * 15 + 15) + 's';
+    particle.style.animationDelay = '-' + (Math.random() * 15) + 's';
+    bg.appendChild(particle);
+  }
+}
 
 // Render Functions
 function createProductCard(product) {

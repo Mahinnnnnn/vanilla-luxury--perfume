@@ -118,3 +118,78 @@ div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
 div:where(.swal2-icon).swal2-success .swal2-success-ring {
   border-color: rgba(212, 175, 55, 0.2) !important;
 }
+
+/* ==========================================================================
+   Luxury Particles & Glow Background
+   ========================================================================== */
+.luxury-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: transparent;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.3;
+  animation: floatOrb 20s infinite ease-in-out alternate;
+}
+
+.glow-orb-1 {
+  width: 40vw;
+  height: 40vw;
+  background: rgba(212, 175, 55, 0.15); /* Gold */
+  top: -10vh;
+  left: -10vw;
+  animation-delay: 0s;
+}
+
+.glow-orb-2 {
+  width: 50vw;
+  height: 50vw;
+  background: rgba(170, 119, 28, 0.1); /* Darker Gold */
+  bottom: -20vh;
+  right: -10vw;
+  animation-delay: -5s;
+}
+
+.glow-orb-3 {
+  width: 30vw;
+  height: 30vw;
+  background: rgba(252, 246, 186, 0.08); /* Light Gold */
+  top: 40%;
+  left: 60%;
+  animation-delay: -10s;
+}
+
+@keyframes floatOrb {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(3vw, -5vh) scale(1.1); }
+  66% { transform: translate(-2vw, 2vh) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+/* Floating Particles */
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #d4af37;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #d4af37, 0 0 20px #fcf6ba;
+  animation: drift linear infinite;
+}
+
+@keyframes drift {
+  from { transform: translateY(100vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  to { transform: translateY(-100px) translateX(100px); opacity: 0; }
+}
