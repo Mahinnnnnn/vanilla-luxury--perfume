@@ -1,0 +1,120 @@
+/* Premium Glassmorphism */
+.glass {
+  background: rgba(10, 10, 10, 0.4);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.glass-card {
+  background: linear-gradient(160deg, rgba(20, 20, 20, 0.6) 0%, rgba(5, 5, 5, 0.8) 100%);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(212, 175, 55, 0.3);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(212, 175, 55, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Elegant Text & Selection */
+::selection {
+  background-color: rgba(212, 175, 55, 0.2); 
+  color: #fcf6ba;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  background-color: #020202;
+}
+
+body {
+  background-color: #020202 !important;
+}
+
+/* Elegant Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #050505; 
+}
+::-webkit-scrollbar-thumb {
+  background: #222; 
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37; 
+}
+
+/* Fade in animations */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+.delay-100 { animation-delay: 0.15s; }
+.delay-200 { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   SweetAlert2 "Sweet Dream" Aesthetic Theme
+   ========================================================================== */
+
+div:where(.swal2-container) div:where(.swal2-popup) {
+  background: linear-gradient(160deg, rgba(20, 20, 20, 0.95) 0%, rgba(5, 5, 5, 0.95) 100%) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(150%) !important;
+  border: 1px solid rgba(212, 175, 55, 0.3) !important;
+  border-radius: 1rem !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+  color: #f8fafc !important;
+  font-family: 'Inter', system-ui, sans-serif !important;
+  padding: 2rem 1.5rem !important;
+}
+
+div:where(.swal2-container) h2:where(.swal2-title) {
+  background: linear-gradient(to right, #BF953F, #FCF6BA, #b38728, #FBF5B7) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.15em !important;
+  font-size: 1.25rem !important;
+  text-transform: uppercase !important;
+}
+
+div:where(.swal2-container) div:where(.swal2-html-container) {
+  color: #a1a1aa !important;
+  font-weight: 300 !important;
+  font-size: 0.95rem !important;
+}
+
+div:where(.swal2-icon).swal2-success {
+  border-color: #d4af37 !important;
+  color: #d4af37 !important;
+}
+
+div:where(.swal2-icon).swal2-success [class^=swal2-success-line] {
+  background-color: #d4af37 !important;
+}
+
+div:where(.swal2-icon).swal2-success .swal2-success-ring {
+  border-color: rgba(212, 175, 55, 0.2) !important;
+}

@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold-400: #ecc94b;
+  --color-gold-500: #d69e2e;
+  --color-gold-600: #b7791f;
+}
+
+body {
+  background-color: #020202;
+  /* Slate 950 */
+  color: #f8fafc;
+  /* Slate 50 */
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.4) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.text-gold {
+  color: var(--color-gold-500);
+}
+
+.bg-gold {
+  background-color: var(--color-gold-500);
+}
+
+.border-gold {
+  border-color: var(--color-gold-500);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for cleaner look */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-500);
+}

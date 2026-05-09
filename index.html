@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AURA Parfums | Luxury Perfume</title>
+  
+  <!-- SweetAlert2 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+  <!-- Tailwind CSS v4 CDN -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="index.css">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-[#020617] text-slate-50 font-sans antialiased overflow-x-hidden selection:bg-yellow-500/30 selection:text-yellow-200">
+
+  <!-- Navbar -->
+  <nav class="fixed w-full z-50 glass border-b border-white/10 px-6 py-4 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="text-2xl font-bold tracking-widest text-[#d69e2e]">AURA</span>
+        <span class="text-sm tracking-widest uppercase text-slate-300">Parfums</span>
+      </div>
+      
+      <div class="hidden md:flex items-center space-x-8">
+        <a href="#hero" class="text-sm uppercase tracking-wider hover:text-[#d69e2e] transition-colors">Home</a>
+        <a href="#featured" class="text-sm uppercase tracking-wider hover:text-[#d69e2e] transition-colors">Featured</a>
+        <a href="#bestsellers" class="text-sm uppercase tracking-wider hover:text-[#d69e2e] transition-colors">Best Sellers</a>
+        <a href="#reviews" class="text-sm uppercase tracking-wider hover:text-[#d69e2e] transition-colors">Reviews</a>
+      </div>
+
+      <div class="flex items-center gap-6">
+        <div class="relative hidden md:block">
+          <input 
+            type="text" 
+            id="searchInput"
+            placeholder="Search fragrances..." 
+            class="bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-sm focus:outline-none focus:border-[#d69e2e] transition-colors w-56 text-white"
+          />
+        </div>
+        <button class="relative group cursor-pointer" onclick="viewCart()">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 group-hover:text-[#d69e2e] transition-colors">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+          </svg>
+          <span id="cartCount" class="absolute -top-2 -right-2 bg-[#d69e2e] text-slate-900 text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center opacity-0 transition-opacity">
+            0
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content Wrapper -->
+  <main id="mainContent">
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 z-0">
+        <img 
+          src="https://images.unsplash.com/photo-1594035910387-fea47794261f?auto=format&fit=crop&q=80&w=2000" 
+          alt="Luxury Perfume" 
+          class="w-full h-full object-cover opacity-40 mix-blend-luminosity"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-[#020617] via-[#020617]/60 to-transparent"></div>
+      </div>
+      
+      <div class="relative z-10 text-center px-4 max-w-4xl mx-auto mt-20">
+        <h1 class="text-5xl md:text-7xl font-light tracking-widest mb-6 drop-shadow-lg fade-in-up">
+          THE ESSENCE OF <span class="text-[#d69e2e] font-normal">LUXURY</span>
+        </h1>
+        <p class="text-lg md:text-xl text-slate-300 font-light tracking-wide mb-10 max-w-2xl mx-auto drop-shadow-md fade-in-up delay-100">
+          Discover our exclusive collection of handcrafted fragrances, designed to leave an unforgettable impression.
+        </p>
+        <button onclick="document.getElementById('featured').scrollIntoView({behavior: 'smooth'})" class="px-8 py-3 bg-[#d69e2e] text-slate-950 uppercase tracking-widest text-sm font-semibold hover:bg-yellow-400 transition-all duration-300 hover:scale-105 cursor-pointer shadow-[0_0_15px_rgba(214,158,46,0.3)] fade-in-up delay-200">
+          Explore Collection
+        </button>
+      </div>
+    </section>
+
+    <!-- Product Grid Container (used for search and displaying sections) -->
+    <div id="productGridContainer">
+      <!-- Featured Section -->
+      <section id="featured" class="py-24 px-6 relative section-group">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 section-header">
+            <h2 class="text-3xl font-light tracking-widest mb-4">SIGNATURE <span class="text-[#d69e2e]">COLLECTION</span></h2>
+            <div class="w-16 h-px bg-[#d69e2e] mx-auto"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10" id="featuredGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Luxury Banner -->
+      <section class="relative py-32 overflow-hidden flex items-center justify-center section-group">
+        <div class="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1588405748880-12d1d2a59f75?auto=format&fit=crop&q=80&w=2000" 
+            alt="Luxury ingredients" 
+            class="w-full h-full object-cover opacity-30 mix-blend-luminosity"
+          />
+          <div class="absolute inset-0 bg-slate-950/70"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-3xl mx-auto glass p-12 rounded-2xl border-[#d69e2e]/30">
+          <h2 class="text-3xl md:text-5xl font-light tracking-widest mb-6 text-[#d69e2e]">
+            CRAFTED WITH EXCELLENCE
+          </h2>
+          <p class="text-lg text-slate-300 font-light tracking-wide mb-8">
+            Only the rarest ingredients are selected to create our signature scents. Experience the pinnacle of olfactory art.
+          </p>
+          <button class="px-8 py-3 border border-[#d69e2e] text-[#d69e2e] uppercase tracking-widest text-sm hover:bg-[#d69e2e] hover:text-slate-950 transition-colors duration-300 cursor-pointer">
+            Discover The Process
+          </button>
+        </div>
+      </section>
+
+      <!-- Best Sellers -->
+      <section id="bestsellers" class="py-24 px-6 relative bg-slate-900/50 section-group">
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16 section-header">
+            <h2 class="text-3xl font-light tracking-widest mb-4">BEST <span class="text-[#d69e2e]">SELLERS</span></h2>
+            <div class="w-16 h-px bg-[#d69e2e] mx-auto"></div>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="bestSellersGrid">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 px-6 section-group">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16 section-header">
+          <h2 class="text-3xl font-light tracking-widest mb-4">CLIENT <span class="text-[#d69e2e]">TESTIMONIALS</span></h2>
+          <div class="w-16 h-px bg-[#d69e2e] mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8" id="reviewsGrid">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-950 border-t border-white/10 pt-16 pb-8 px-6">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+      <div class="col-span-1 md:col-span-2">
+        <div class="flex items-center gap-2 mb-6">
+          <span class="text-2xl font-bold tracking-widest text-[#d69e2e]">AURA</span>
+          <span class="text-sm tracking-widest uppercase text-slate-300">Parfums</span>
+        </div>
+        <p class="text-slate-400 font-light max-w-sm mb-6">
+          Redefining luxury through the art of fine perfumery. Crafted with the world's most precious ingredients.
+        </p>
+      </div>
+      <div>
+        <h4 class="text-[#d69e2e] tracking-widest uppercase text-sm mb-6">Explore</h4>
+        <ul class="space-y-3 font-light text-slate-400">
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">Our Story</a></li>
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">Collections</a></li>
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">Journal</a></li>
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">Boutiques</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-[#d69e2e] tracking-widest uppercase text-sm mb-6">Support</h4>
+        <ul class="space-y-3 font-light text-slate-400">
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">Contact Us</a></li>
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">Shipping & Returns</a></li>
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">FAQ</a></li>
+          <li><a href="#" class="hover:text-[#d69e2e] transition-colors">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="max-w-7xl mx-auto border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between">
+      <p class="text-slate-500 font-light text-sm mb-4 md:mb-0">
+        &copy; <span id="currentYear"></span> AURA Parfums. All rights reserved.
+      </p>
+      <div class="flex gap-4">
+        <a href="#" class="text-slate-400 hover:text-[#d69e2e] transition-colors">Instagram</a>
+        <a href="#" class="text-slate-400 hover:text-[#d69e2e] transition-colors">Facebook</a>
+        <a href="#" class="text-slate-400 hover:text-[#d69e2e] transition-colors">Twitter</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Product Details Modal -->
+  <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300">
+    <div class="absolute inset-0 bg-[#020617]/80 backdrop-blur-md cursor-pointer" onclick="closeModal()"></div>
+    <div class="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto glass-card rounded-2xl shadow-2xl flex flex-col md:flex-row transform scale-95 transition-transform duration-300" id="modalContent">
+      <button onclick="closeModal()" class="absolute top-4 right-4 z-10 p-2 text-slate-400 hover:text-[#d69e2e] bg-slate-900/50 rounded-full transition-colors cursor-pointer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+        </svg>
+      </button>
+      <div class="w-full md:w-1/2 h-64 md:h-auto relative">
+        <img id="modalImage" src="" alt="Product" class="w-full h-full object-cover mix-blend-luminosity">
+        <div class="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-slate-900 via-transparent to-transparent opacity-60"></div>
+      </div>
+      <div class="w-full md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+        <h2 id="modalName" class="text-3xl md:text-4xl font-light tracking-widest mb-2"></h2>
+        <p id="modalPrice" class="text-2xl text-[#d69e2e] mb-8"></p>
+        <div class="mb-8">
+          <h4 class="text-[#d69e2e] uppercase tracking-widest text-sm mb-3">Fragrance Notes</h4>
+          <p id="modalNotes" class="text-slate-300 font-light leading-relaxed"></p>
+        </div>
+        <div class="mb-8">
+          <h4 class="text-[#d69e2e] uppercase tracking-widest text-sm mb-3">Description</h4>
+          <p class="text-slate-400 font-light text-sm leading-relaxed">
+            A masterfully crafted blend designed for the discerning individual. 
+            This fragrance evolves on the skin, revealing complex layers over time.
+            Packaged in our signature heavy glass flacon with a magnetic gold cap.
+          </p>
+        </div>
+        <button id="modalAddToCart" class="w-full py-4 bg-[#d69e2e] text-slate-950 uppercase tracking-widest text-sm font-semibold hover:bg-yellow-400 transition-colors duration-300 shadow-[0_0_15px_rgba(214,158,46,0.3)] cursor-pointer">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script src="script.js"></script>
+</body>
+</html>
